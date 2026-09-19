@@ -1,6 +1,7 @@
 import {collectConfig,validate,hasSafetyBypass} from './validator.js?v=3';
 import {prepare,formatPattern} from './constraints.js';
 import {$,$$,formatNumber,formatTime,setText,showError,clearError} from './ui.js';
+import './auth.js';
 let worker=null;let currentModel=null;let startedAt=0;let elapsedTimer=null;let patternLength=0;let searchPhase='idle';let previewCount=null;
 const TYPES=[['any','Any'],['upper','A-Z'],['lower','a-z'],['digit','0-9'],['symbol','Symbol'],['space','Space'],['specific','Specific character']];
 function positionSlot(index,existing={type:'any',value:''}){const wrap=document.createElement('div');wrap.className='pattern-slot';wrap.innerHTML=`<label>Position ${index+1}</label><select class="position-type">${TYPES.map(([value,label])=>`<option value="${value}" ${existing.type===value?'selected':''}>${label}</option>`).join('')}</select><input class="specific-value" maxlength="1" value="${existing.value||''}" placeholder="char" ${existing.type==='specific'?'':'hidden'}>`;const select=wrap.querySelector('select');const input=wrap.querySelector('input');select.addEventListener('change',()=>{input.hidden=select.value!=='specific';schedulePreview()});input.addEventListener('input',schedulePreview);return wrap}
