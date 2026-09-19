@@ -1,0 +1,1 @@
+C:\Users\HP\emsdk\upstream\emscripten\em++.exe -O3 -DNDEBUG "-sEXPORTED_FUNCTIONS=['_calculate_possibilities']" "-sEXPORTED_RUNTIME_METHODS=['cwrap']" -sMODULARIZE=1 -sEXPORT_ES6=1 -Wl,--no-entry -sENVIRONMENT=web -sALLOW_MEMORY_GROWTH=1 -sFILESYSTEM=0 @CMakeFiles\possibility_engine.dir\objects1.rsp -o possibility_engine.js
